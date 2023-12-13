@@ -1,36 +1,24 @@
+//@Author: David Maduike Modified Proffesor Talmage original copy.
 function setup() {
-  createCanvas(400,400)
-  background(255);
+  createCanvas(600, 600); // I increased the canvas size
+  background(102, 153, 255); //Background color changed
 }
 
 function draw() {
-  loadPixels();
-  let pd = pixelDensity();
-//  text(pd,0,200);
-  var count = 0;
-  
-  for (let x = 0; x < width; x++) {
-    for (let y = 0; y < height; y++) {
-      let pixIndex = 4 * pd * (y * pd * width + x * pd);
-      if (pixels[pixIndex] == 0 && pixels[pixIndex + 1] == 0 && pixels[pixIndex + 2] == 0) {
-        count++;
-      } else {
-        continue;
-      }
-    }
-  }
-  if (count == width*height) {
-    background(5,200,120);
-    textSize(60);
-    text("Success!",75,200);
-    noLoop();
-    return;
-  }
   if (mouseIsPressed) {
-    fill(0);
-    stroke(0);
+    fill(255, 0, 0); // Changed fill color when mouse is pressed
+    stroke(255, 204, 0); // Changed stroke color when mouse is pressed
+    ellipse(mouseX, mouseY, 100, 100); // Increased ellipse size
   } else {
-    fill(255);
+    fill(0, 255, 0); // Change fill color when mouse is not pressed
+    noStroke(); // Remove stroke when mouse is not pressed
+    ellipse(mouseX, mouseY, 50, 50); // Decreased ellipse size
   }
-  ellipse(mouseX,mouseY,80,80);
+}
+
+function mousePressed() {
+  background(255, 204, 102); // Change background color on canvas click
+  textSize(30); // Change text size
+  fill(0); // Change text color
+  text("Canvas Clicked!", 200, 300); // Display a different message
 }
